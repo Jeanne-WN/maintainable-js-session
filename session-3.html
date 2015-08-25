@@ -56,92 +56,24 @@
 
 				<section>
 					<section>
-						<h4>Dont call me, I'll call you</h4>
+						<h4>Meta Pattern: <span class="highlight">Observer</span> pattern</h4>
 					</section>
-					<section data-background="#8dcffc">
+
+					<section data-background="#eeeeee">
 						<img src="images/observer_pattern_resized.png" alt="" />
 					</section>
 
-					<section data-background="#8dcffc" data-markdown>
-						<h4>Observer pattern - interface</h4>
-						```js
-						function Observer() {
-						}
-
-						Observer.prototype.update = function() {
-							throw new Error("not implemented");
-						}
-						```
+					<section>
+						<h4>a live <span class="highlight">demo</span></h4>
 					</section>
 
-					<section data-background="#8dcffc" data-markdown>
-						<h4>Observer pattern - implementation</h4>
-						```js
-						var bbs = Object.create(Observer.prototype);
-
-						bbs.update = function(data) {
-							console.log(data);
-						}
-						```
-					</section>
-
-					<section data-background="#8dcffc" data-markdown>
-						<h4>Observer pattern - Subject</h4>
-						```js
-						var Subject = function() {
-							this.observers = [];
-						}
-
-						Subject.prototype.addObserver = function(observer) {
-							this.observers.push(observer);
-						}
-
-						Subject.prototype.notify = function(data) {
-							this.observers.forEach(function(observer) {
-								observer.update(data);
-							});
-						}
-						```
-					</section>
-
-					<section data-background="#8dcffc" data-markdown>
-						<h4>Observer pattern - usage</h4>
-						```js
-						var weather = new Subject();
-
-						weather.addObserver(bbs);
-
-						weather.notify("Cloudy in the morning");
-						```
-					</section>
-
-
-					<section data-background="#8dcffc" data-markdown>
-						<h4>Observer pattern - usage</h4>
-						```js
-						var alwayson = Object.create(Observer.prototype);
-
-						alwayson.update = function(data) {
-							alert(data);
-						}
-
-						```
-					</section>
-
-					<section data-background="#8dcffc" data-markdown>
-						<h4>Observer pattern - usage</h4>
-						```js
-						var weather = new Subject();
-
-						weather.addObserver(bbs);
-						weather.addObserver(alwayson);
-
-						weather.notify("Cloudy in the morning");
-						```
-					</section>
 				</section>
 
 				<section>
+					<section>
+						<h4>A step further: <span class="highlight">MV*</span> architecture</h4>
+					</section>
+
 					<section>
 						<h4>mvc was born in <span class="highlight">1970s</span></h4>
 					</section>
@@ -166,11 +98,15 @@
 
 				<section>
 					<section>
-						<h4>mvp in <span class="highlight">frontend</span></h4>
+						<h4>mv* in <span class="highlight">frontend</span></h4>
 					</section>
 
 					<section>
 						<img src="images/backbone.png" alt="" />
+					</section>
+
+					<section>
+						<h4><span class="highlight">backbone</span> is a mvc/mvp library in JavaScript</h4>
 					</section>
 
 					<section data-markdown>
@@ -183,6 +119,11 @@
 						<h4>Codebase walkthrough</h4>
 					</section>
 
+					<section data-markdown>
+						```shell
+								bower install backbone --save
+						```
+					</section>
 				</section>
 
 				<section>
