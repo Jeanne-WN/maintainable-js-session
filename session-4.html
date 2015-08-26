@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Maintainable JavaScript</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style media="screen">
+			.highlight {
+				color: #8dcffc;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Modularization</h1>
+					<p>Maintainable JavaScript</p>
+					<p>
+						<small><a href="https://github.com/abruzzi">邱俊涛</a> & <a href="https://github.com/Jeanne-WN">王妮</a></small>
+					</p>
+				</section>
+
+				<section>
+					<section><img src="images/lego-modules-bricks.jpg" alt=""></section>
+					<section><img src="images/crazy.png" alt=""></section>
+					<section data-markdown>
+						```c
+						#include "stdio.h"
+
+						int main(int argc, char **argv)
+						{
+						  printf("hello, world\n");
+						}
+						```
+					</section>
+
+					<section data-markdown>
+						```java
+						import org.icodeit.design.Observer;
+						import org.icodeit.design.Subject;
+
+						public Class Main {
+						  private Subject subject;
+						  private Observer observer;
+
+						  public static void main(String[] args) {
+
+						  }
+						}
+						```
+					</section>
+
+				</section>
+				<section>
+					<section>
+						<h4>View = Template + Data + Logic</h4>
+					</section>
+
+					<section>
+						<h4>Asynchronous Module Definition</h4>
+					</section>
+					<section>
+						<h4>define + require</h4>
+					</section>
+
+					<section data-markdown>
+					```js
+					define('myModule',
+					    ['foo', 'bar'],
+					    function ( foo, bar ) {
+					        var myModule = {
+					            doStuff:function(){
+					                console.log('Yay! Stuff');
+					            }
+					        }
+					        return myModule;
+					    });
+					```
+					</section>
+
+					<section>
+						<h4>CommonJS</h4>
+					</section>
+					<section>
+						<h4>exports + require</h4>
+					</section>
+					<section data-markdown>
+					```js
+					var Observer = require('./observer');
+
+					// Observer #1
+					var alwayson = Object.create(Observer.prototype);
+					alwayson.update = function(data) {
+					  console.log(data);
+					}
+					```
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<img src="images/browserify.png" alt="">
+					</section>
+
+					<section data-markdown>
+						```shell
+						npm install browserify -g
+						```
+					</section>
+
+				</section>
+
+				<section>
+					<h4>Thank You</h4>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
